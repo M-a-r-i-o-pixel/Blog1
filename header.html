@@ -1,0 +1,108 @@
+<style>
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100px;
+}
+
+header h1 {
+    text-align: center;
+    background-color:rgb(62, 101, 146);
+    color:yellow;
+    font-size: 40px;
+    padding: 10px 20px;
+}
+
+.menu {
+    display: flex;         /* always flex */
+    gap: 10px;             /* gap works now */
+}
+
+.menu a {
+    text-decoration: none;
+    color: greenyellow;
+    font-size: 20px;
+    transition: 1s ease;
+}
+
+nav {
+    background-color: black;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+header button {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 1s ease;
+    cursor: pointer;
+}
+
+@media (max-width: 440px) {
+    header h1 {
+        font-size: 30px;
+    }
+    .menu a {
+        font-size: 15px;
+        padding:5px;
+    }
+
+    .menu {
+        flex-direction: column;
+        display: none;   /* hidden until button clicked */
+    }
+}
+
+@media (min-width: 441px) {
+    .menu {
+        flex-direction: row; /* normal horizontal menu */
+        display: flex;       /* always visible on desktop */
+        margin-right:30px;
+    }
+}
+
+header button:hover {
+    color: red;
+    background-color: white;
+}
+
+header nav span a:hover {
+    background-color: white;
+    padding: 5px 6px;
+    color: red;
+}
+</style>
+
+<header>
+    <h1>De ale unu-i Mario !</h1>
+    <nav>
+        <button onclick="changeDisplayMenu();">&#9776;</button>
+        <span class="menu" id="menu">
+            <a href="index.php">HOME</a>
+            <a href="articole.php">ARTICOLE</a>
+            <a href="store.php">STORE</a>
+        </span>
+    </nav>
+</header>
+
+<script>
+function changeDisplayMenu() {
+    let menu = document.getElementById("menu");
+    let style = window.getComputedStyle(menu);
+    if (style.display === "none") {
+        menu.style.display = "flex";  // keep flex so gap works
+    } else {
+        menu.style.display = "none";
+    }
+}
+</script>
